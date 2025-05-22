@@ -1,0 +1,50 @@
+[property]
+gpu-id=0
+net-scale-factor=0.0039215697906911373
+
+# 0: RGB 1: BGR 2: GRAY
+model-color-format=0
+
+# on jetson
+model-engine-file=../models/model_jetson_sgie_bib_n_20250227_fp16_batch4_nxsuper.engine
+
+# 0=FP32, 1=INT8, 2=FP16
+network-mode=2
+
+
+int8-calib-file=calib.table
+labelfile-path=labels_bib.txt
+
+batch-size=4
+
+# 检测的类别数量
+num-detected-classes=35
+interval=0
+
+gie-unique-id=2
+
+operate-on-gie-id=1
+operate-on-class-ids=1
+
+#运行模式，1主，2次
+process-mode=2
+
+# 网络类型：0检测，1分类，2分割，3实例分割
+network-type=0
+cluster-mode=2
+
+maintain-aspect-ratio=1
+symmetric-padding=0
+#workspace-size=2000
+
+parse-bbox-func-name=NvDsInferParseYolo
+#parse-bbox-func-name=NvDsInferParseYoloCuda
+custom-lib-path=../models/libnvdsinfer_custom_impl_Yolo0411.so
+
+input-object-min-width = 80
+input-object-max-width = 480
+
+[class-attrs-all]
+nms-iou-threshold=0.45
+pre-cluster-threshold=0.3
+topk= 10

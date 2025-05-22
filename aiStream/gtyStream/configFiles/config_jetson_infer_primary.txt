@@ -1,0 +1,40 @@
+[property]
+gpu-id=0
+net-scale-factor=0.0039215697906911373
+model-color-format=0
+
+
+
+# 0=FP32, 1=INT8, 2=FP16
+# 采用n模型
+
+model-engine-file=../models/model_jetson_pgie_n_20250226_fp16_batch4_nxsuper.engine
+
+batch-size=4
+network-mode=2
+# custom-lib-path=../models/libnvdsinfer_custom_impl_Yoson_fp16.so
+custom-lib-path=../models/libnvdsinfer_custom_impl_Yolo0411.so
+
+
+
+
+
+labelfile-path=labels_p.txt
+
+num-detected-classes=4
+interval=0
+gie-unique-id=1
+process-mode=1
+cluster-mode=2
+maintain-aspect-ratio=1
+symmetric-padding=1
+#workspace-size=2000
+parse-bbox-func-name=NvDsInferParseYolo
+#parse-bbox-func-name=NvDsInferParseYoloCuda
+
+[class-attrs-all]
+nms-iou-threshold=0.3
+pre-cluster-threshold=0.6
+topk=100
+
+detected-min-w = 70

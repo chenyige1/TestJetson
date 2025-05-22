@@ -1,0 +1,10 @@
+
+/usr/src/tensorrt/bin/trtexec \
+ --onnx=../models/model_jetson_pgie_n_20240815.onnx \
+ --saveEngine=../models/model_jetson_pgie_n_size640pt_gpu0_fp16.engine \
+ --fp16 --memPoolSize=workspace:4096MiB
+
+/usr/src/tensorrt/bin/trtexec \
+ --onnx=../models/model_jetson_sgie_n_size160pt_20240815.onnx \
+ --saveEngine=../models/model_jetson_sgie_n_size160pt_gpu0_fp16_0815.engine \
+ --fp16 --memPoolSize=workspace:4096MiB
